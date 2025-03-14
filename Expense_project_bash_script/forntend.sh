@@ -7,4 +7,4 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 cp /home/ec2-user/DevOps/Expense_project_bash_script/proxy.conf /etc/nginx/default.d/expense.conf
 systemctl restart nginx 
-echo " ** frontend installation completed** "cl
+echo " ** frontend installation completed** "
