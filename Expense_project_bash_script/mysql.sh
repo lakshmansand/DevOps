@@ -1,5 +1,5 @@
 dnf install mysql-server -y
-systemctl enable msqld
-systemctl start msqlmd
+systemctl enable mysqld
+systemctl start mysqld
 mysql_secure_installation --set-root-pass ExpenseApp@1
 echo "**mysql installation completed*   *"
