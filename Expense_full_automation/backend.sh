@@ -2,7 +2,7 @@ dnf module disable nodejs -y
 dnf module enable nodejs:20 -y
 dnf install nodejs -y
 useradd expense
-mkdir -o /app
+mkdir /app
 cd /app
 curl -o /tmp/backend.zip https://expense-web-app.s3.amazonaws.com/backend.zip
 unzip -o /tmp/backend.zip
