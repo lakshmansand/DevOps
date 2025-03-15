@@ -1,0 +1,20 @@
+[Unit]
+Description=Backend Service
+After=network.target
+
+[Service]
+User=expense
+
+# Run a pre-start script to set the system's private IP dynamically
+ExecStartPre=/bin/bash -c 'PRIVATE_IP=$(hostname -I | awk "{print \$1}"); sed -i "s|^Environment=DB_HOST=.*|Environment=DB_HOST=\"$PRIVATE_IP\"|" /etc/systemd/system/backend.service'
+
+# Environment variable for DB host (will be updated dynamically)
+Environment=DB_HOST="localhost"
+
+# Start the Node.js backend service
+ExecStart=/bin/node /app/index.js
+SyslogIdentifier=backend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

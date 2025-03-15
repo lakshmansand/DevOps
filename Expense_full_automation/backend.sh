@@ -11,7 +11,8 @@ cp /home/ec2-user/DevOps/Expense_project_bash_script/backend.service /etc/system
 chown -R expense:expense /app
 chmod 775 /app
 dnf install mysql-server -y
-mysql -h localhost -u root -pExpenseApp@1 < /app/schema/backend.sql
+PRIVATE_IP=$(hostname -I | awk '{print $1}')
+mysql -h "$PRIVATE_IP" -u root -pExpenseApp@1 < /app/schema/backend.sql
 systemctl daemon-reload
 systemctl enable backend 
 systemctl start backend
